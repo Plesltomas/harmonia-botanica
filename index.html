@@ -14,6 +14,7 @@ body{background:var(--green-light);color:#222}
 
 nav{position:fixed;width:100%;top:0;background:rgba(255,255,255,0.9);backdrop-filter:blur(10px);display:flex;justify-content:space-between;padding:15px 40px;z-index:1000}
 nav a{margin:0 10px;text-decoration:none;color:#333;font-weight:500}
+#cart{font-weight:bold}
 
 header{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;color:white}
 .video-bg{position:absolute;top:50%;left:50%;width:177.77vh;height:100vh;transform:translate(-50%,-50%);z-index:-1;pointer-events:none}
@@ -30,27 +31,14 @@ header h1{font-size:4rem}
 section{max-width:1200px;margin:100px auto;padding:0 20px}
 h2{text-align:center;margin-bottom:40px;color:var(--green-dark)}
 
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:white;padding:25px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.05);transition:0.3s}
-.card:hover{transform:translateY(-5px)}
-
-.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.split img{width:100%;border-radius:20px}
-
 .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 .product{background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.05)}
 .product img{width:100%;height:200px;object-fit:cover}
 .product div{padding:15px}
 
-.cta{background:var(--green-main);color:white;text-align:center;padding:80px 20px}
-
-.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-.member{background:white;padding:20px;border-radius:20px;text-align:center}
-.member img{width:100px;height:100px;border-radius:50%}
+.cart-box{position:fixed;right:20px;bottom:20px;background:white;padding:20px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.2);width:250px}
 
 footer{background:#1f3d2b;color:white;text-align:center;padding:30px}
-
-@media(max-width:800px){.split{grid-template-columns:1fr}header h1{font-size:2.5rem}}
 </style>
 </head>
 
@@ -61,8 +49,8 @@ footer{background:#1f3d2b;color:white;text-align:center;padding:30px}
 <div>
 <a href="#home">Domů</a>
 <a href="#products">Produkty</a>
-<a href="#about">O nás</a>
 <a href="#contact">Kontakt</a>
+<span id="cart">Košík: 0</span>
 </div>
 </nav>
 
@@ -74,32 +62,13 @@ footer{background:#1f3d2b;color:white;text-align:center;padding:30px}
 <h1>Harmonia Botanica</h1>
 <p>Přírodní síla bylin</p>
 <button class="btn btn-main" onclick="scrollToSection('products')">Nakupovat</button>
-<button class="btn btn-outline" onclick="scrollToSection('about')">Zjistit více</button>
 </div>
 </header>
-
-<section>
-<h2>Proč my?</h2>
-<div class="features">
-<div class="card">100% přírodní produkty</div>
-<div class="card">Ruční výroba</div>
-<div class="card">Podpora komunity</div>
-<div class="card">Ekologický přístup</div>
-</div>
-</section>
-
-<section id="about" class="split">
-<img src="ABOUT_IMAGE.jpg">
-<div>
-<h2>O nás</h2>
-<p>Vytváříme produkty z bylin, které pomáhají tělu i mysli.</p>
-<button class="btn btn-main" onclick="alert('Více info brzy!')">Náš příběh</button>
-</div>
-</section>
 
 <section id="products">
 <h2>Produkty</h2>
 <div class="products">
+
 <div class="product">
 <img src="produkt1.jpg">
 <div>
@@ -123,30 +92,42 @@ footer{background:#1f3d2b;color:white;text-align:center;padding:30px}
 <button class="btn btn-main" onclick="addToCart('Byliny')">Koupit</button>
 </div>
 </div>
-</div>
-</section>
 
-<section class="cta">
-<h2>Začni s přírodní cestou</h2>
-<button class="btn" onclick="alert('Košík přidán!')">Přidat do košíku</button>
+</div>
 </section>
 
 <section id="contact">
 <h2>Kontakt</h2>
-<p style="text-align:center">Email: info@harmonia.cz</p>
+<p style="text-align:center">info@harmonia.cz</p>
 </section>
+
+<div class="cart-box">
+<h3>Košík</h3>
+<ul id="cart-items"></ul>
+</div>
 
 <footer>
 <p>© 2026 Harmonia Botanica</p>
 </footer>
 
 <script>
+let cartCount = 0;
+let cartItems = [];
+
 function scrollToSection(id){
     document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
 function addToCart(product){
-    alert(product + ' přidán do košíku!');
+    cartCount++;
+    cartItems.push(product);
+
+    document.getElementById("cart").innerText = "Košík: " + cartCount;
+
+    let list = document.getElementById("cart-items");
+    let item = document.createElement("li");
+    item.innerText = product;
+    list.appendChild(item);
 }
 </script>
 

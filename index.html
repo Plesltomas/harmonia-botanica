@@ -9,32 +9,29 @@
 <style>
 :root{--green-dark:#1f3d2b;--green-main:#6fa36f;--green-light:#f4f9f1}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-html{scroll-behavior:smooth}
-body{background:var(--green-light);color:#222}
+body{background:var(--green-light)}
 
 nav{position:fixed;width:100%;top:0;background:rgba(255,255,255,0.9);display:flex;justify-content:space-between;padding:15px 40px;z-index:1000}
-nav a{margin:0 10px;text-decoration:none;color:#333;font-weight:500}
+nav a{margin:0 10px;text-decoration:none;color:#333}
 #cart{font-weight:bold}
 
-header{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:white;background:black}
-header h1{font-size:3.5rem}
+header{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;color:white;text-align:center;overflow:hidden}
+.video-bg{position:absolute;top:50%;left:50%;width:177.77vh;height:100vh;transform:translate(-50%,-50%);z-index:-1}
+.video-bg iframe{width:100%;height:100%}
+header::after{content:"";position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.5)}
 
-.btn{padding:12px 25px;border:none;border-radius:30px;cursor:pointer;font-weight:600;margin:5px}
+.btn{padding:12px 25px;border:none;border-radius:30px;margin:5px;cursor:pointer}
 .btn-main{background:var(--green-main);color:white}
-.btn-outline{background:transparent;border:2px solid white;color:white}
-
-section{max-width:1200px;margin:100px auto;padding:0 20px}
-h2{text-align:center;margin-bottom:40px;color:var(--green-dark)}
-
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.product{background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.05)}
-.product img{width:100%;height:200px;object-fit:cover}
-.product div{padding:15px}
 
 .page{display:none}
 .page.active{display:block}
 
-footer{background:#1f3d2b;color:white;text-align:center;padding:30px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding:100px 20px}
+.product{background:white;border-radius:15px;overflow:hidden}
+.product img{width:100%;height:200px;object-fit:cover}
+
+section{padding:100px 20px;text-align:center}
+
 </style>
 </head>
 
@@ -46,7 +43,6 @@ footer{background:#1f3d2b;color:white;text-align:center;padding:30px}
 <a href="#" onclick="showPage('home')">Domů</a>
 <a href="#" onclick="showPage('products')">Produkty</a>
 <a href="#" onclick="showPage('cartPage')">Košík</a>
-<a href="#" onclick="showPage('contact')">Kontakt</a>
 <span id="cart">Košík: 0</span>
 </div>
 </nav>
@@ -54,93 +50,77 @@ footer{background:#1f3d2b;color:white;text-align:center;padding:30px}
 <!-- HOME -->
 <div id="home" class="page active">
 <header>
+<div class="video-bg">
+<iframe src="https://www.youtube.com/embed/w6uX9jamcwQ?autoplay=1&mute=1&loop=1&playlist=w6uX9jamcwQ&controls=0&modestbranding=1&playsinline=1"></iframe>
+</div>
 <div>
 <h1>Harmonia Botanica</h1>
 <p>Přírodní síla bylin</p>
 <button class="btn btn-main" onclick="showPage('products')">Nakupovat</button>
 </div>
 </header>
+
+<section>
+<h2>O nás</h2>
+<img src="https://tse4.mm.bing.net/th/id/OIP.-f7k6DoJsb1D6827URocjQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" style="width:60%;border-radius:20px">
+<p>Pracujeme s přírodními bylinami a vytváříme produkty pro zdraví.</p>
+</section>
 </div>
 
 <!-- PRODUCTS -->
 <div id="products" class="page">
-<section>
-<h2>Produkty</h2>
 <div class="products">
 
 <div class="product">
-<img src="produkt1.jpg">
-<div>
+<img src="https://th.bing.com/th?id=OIF.iQW7zvRVQ%2bKor54QVFIlMw&rs=1&pid=ImgDetMain&o=7&rm=3">
 <h3>Bylinné mýdlo</h3>
 <button class="btn btn-main" onclick="addToCart('Mýdlo')">Koupit</button>
 </div>
-</div>
 
 <div class="product">
-<img src="produkt2.jpg">
-<div>
+<img src="https://tse2.mm.bing.net/th/id/OIF.sYCadqzdbEUaSVj9Zevxqw?rs=1&pid=ImgDetMain&o=7&rm=3">
 <h3>Bylinný set</h3>
 <button class="btn btn-main" onclick="addToCart('Set')">Koupit</button>
 </div>
-</div>
 
 <div class="product">
-<img src="produkt3.jpg">
-<div>
+<img src="https://th.bing.com/th?id=OIF.%2bp790VZGwDxwCxTqU0NYgg&rs=1&pid=ImgDetMain&o=7&rm=3">
 <h3>Sušené byliny</h3>
 <button class="btn btn-main" onclick="addToCart('Byliny')">Koupit</button>
 </div>
+
+<div class="product">
+<img src="https://th.bing.com/th?id=OIF.W%2fbSb4jqfL7vuuZ9KtegSg&rs=1&pid=ImgDetMain&o=7&rm=3">
+<h3>Bylinný olej</h3>
+<button class="btn btn-main" onclick="addToCart('Olej')">Koupit</button>
 </div>
 
 </div>
-</section>
 </div>
 
-<!-- CART PAGE -->
+<!-- CART -->
 <div id="cartPage" class="page">
 <section>
 <h2>Košík</h2>
 <ul id="cart-items"></ul>
-<button class="btn btn-main" onclick="checkout()">Pokračovat k objednávce</button>
+<button class="btn btn-main" onclick="checkout()">Objednat</button>
 </section>
 </div>
-
-<!-- CONTACT -->
-<div id="contact" class="page">
-<section>
-<h2>Kontakt</h2>
-<p style="text-align:center">info@harmonia.cz</p>
-</section>
-</div>
-
-<footer>
-<p>© 2026 Harmonia Botanica</p>
-</footer>
 
 <script>
 let cartCount=0;
-let cartItems=[];
-
-function showPage(pageId){
-    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-    document.getElementById(pageId).classList.add('active');
-    window.scrollTo(0,0);
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
 }
-
-function addToCart(product){
-    cartCount++;
-    cartItems.push(product);
-    document.getElementById('cart').innerText='Košík: '+cartCount;
-
-    let list=document.getElementById('cart-items');
-    let item=document.createElement('li');
-    item.innerText=product;
-    list.appendChild(item);
+function addToCart(p){
+ cartCount++;
+ document.getElementById('cart').innerText='Košík: '+cartCount;
+ let li=document.createElement('li');
+ li.innerText=p;
+ document.getElementById('cart-items').appendChild(li);
 }
-
-function checkout(){
-    alert('Objednávka odeslána (demo)');
-}
+function checkout(){alert('Objednávka odeslána!')}
 </script>
 
 </body>

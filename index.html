@@ -13,7 +13,6 @@
   --text-dark: #333;
   --btn-hover: #558c4b;
 }
-
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 body { background: var(--green-light); color: var(--text-dark); line-height: 1.6; scroll-behavior: smooth; }
 a { text-decoration:none; color:inherit; }
@@ -58,7 +57,7 @@ section p { max-width:750px; margin:0 auto 25px; }
 section img { border-radius:20px; margin-bottom:25px; }
 
 /* PRODUCTS GRID */
-.products { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; padding:0 20px; }
+.products, .workshops { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; padding:0 20px; }
 .product {
   background:white; border-radius:15px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.1);
   transition:transform 0.3s,box-shadow 0.3s;
@@ -67,9 +66,6 @@ section img { border-radius:20px; margin-bottom:25px; }
 .product img { width:100%; height:200px; object-fit:cover; }
 .product h3 { padding:15px; font-size:1.2rem; }
 .product p { padding:0 15px 15px; font-size:0.95rem; color:#555; }
-
-/* WORKSHOPS GRID */
-.workshops { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
 
 /* CONTACT FORM */
 .contact-form { max-width:500px; margin:0 auto; text-align:left; }
@@ -131,25 +127,25 @@ footer a:hover { color:white; }
 <h2>Naše produkty</h2>
 <div class="products">
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://pixabay.com/illustrations/ai-generated-herbs-kitchen-jars-8775370/" alt="Bylinné mýdlo">
     <h3>Bylinné mýdlo</h3>
     <p>Přírodní mýdlo z léčivých bylin pro každodenní péči.</p>
     <button class="btn btn-main" onclick="addToCart('Bylinné mýdlo')">Koupit</button>
   </div>
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://www.vecteezy.com/photo/39316699-ai-generated-herb-bundle-composition-medicinal-herbs-tied-with-twine-or-ribbon-background-image-generative-ai" alt="Bylinný set">
     <h3>Bylinný set</h3>
     <p>Kompletní set bylin pro domácí výrobu vlastních přípravků.</p>
     <button class="btn btn-main" onclick="addToCart('Bylinný set')">Koupit</button>
   </div>
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://pixabay.com/illustrations/ai-generated-flowers-herbs-summer-8392277/" alt="Sušené byliny">
     <h3>Sušené byliny</h3>
     <p>Vysoce kvalitní sušené byliny od bio-dodavatelů, připravené k použití.</p>
     <button class="btn btn-main" onclick="addToCart('Sušené byliny')">Koupit</button>
   </div>
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://pixabay.com/illustrations/ai-generated-skin-care-herbs-plant-8370144/" alt="Bylinný olej">
     <h3>Bylinný olej</h3>
     <p>Přírodní olej pro relaxaci a péči o tělo.</p>
     <button class="btn btn-main" onclick="addToCart('Bylinný olej')">Koupit</button>
@@ -162,7 +158,7 @@ footer a:hover { color:white; }
 <div id="about" class="page">
 <section>
 <h2>O firmě</h2>
-<img src="images/produkty.jpg" style="width:60%;border-radius:20px;margin-bottom:20px">
+<img src="https://www.freepik.com/premium-ai-image/various-herbs-plants-commonly-used-herbal-medicine-plants-are-shown-their-natural-form-with-roots-leaves-flowers-visible-generative-ai_40902059.htm" alt="O firmě" style="width:60%;border-radius:20px;margin-bottom:20px">
 <p>Harmonia Botanica je rodinná firma zaměřená na výrobu a distribuci přírodních bylinkových produktů. Naším cílem je podporovat zdravý životní styl, šířit znalosti o bylinách a přinášet zákazníkům produkty nejvyšší kvality. Každý produkt je pečlivě vyroben z ekologicky pěstovaných surovin a testován pro maximální účinnost.</p>
 </section>
 </div>
@@ -173,22 +169,22 @@ footer a:hover { color:white; }
 <h2>Naše činnost</h2>
 <div class="products">
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://pixabay.com/illustrations/ai-generated-herbs-kitchen-jars-8775370/" alt="Výroba sad">
     <h3>Výroba bylinkových sad</h3>
     <p>Vytváříme sady pro domácí výrobu bylinkových přípravků.</p>
   </div>
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://www.vecteezy.com/photo/39316699-ai-generated-herb-bundle-composition-medicinal-herbs-tied-with-twine-or-ribbon-background-image-generative-ai" alt="Nákup polotovarů">
     <h3>Nákup přírodních polotovarů</h3>
     <p>Spolupracujeme s dodavateli jako Mýdlový svět pro kvalitní suroviny.</p>
   </div>
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://pixabay.com/illustrations/ai-generated-flowers-herbs-summer-8392277/" alt="Sušení bylin">
     <h3>Sušení bylin</h3>
     <p>Sušíme vybrané druhy bylin přímo od bio-dodavatelů.</p>
   </div>
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://pixabay.com/illustrations/ai-generated-skin-care-herbs-plant-8370144/" alt="Sociální projekty">
     <h3>Sociální projekty</h3>
     <p>Darujeme sady sociálně znevýhodněným a podporujeme komunity.</p>
   </div>
@@ -203,12 +199,12 @@ footer a:hover { color:white; }
 <p>Naučíme vás vyrobit vlastní produkty pomocí našich sad. Přihlaste se na interaktivní workshop a získejte zkušenosti s bylinkami a přírodní výrobou.</p>
 <div class="workshops">
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://www.dreamstime.com/stock-illustration-illustration-workshop-icon-isolated-over-white-background-image60974892" alt="Workshop mýdla">
     <h3>Workshop: Mýdla</h3>
     <p>Vyrobte si vlastní bylinné mýdlo s naším instruktorem.</p>
   </div>
   <div class="product">
-    <img src="images/produkty.jpg">
+    <img src="https://site.aace.org/conf/workshops/" alt="Workshop oleje">
     <h3>Workshop: Bylinné oleje</h3>
     <p>Naučte se vytvářet relaxační a aromatické oleje.</p>
   </div>

@@ -7,41 +7,91 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{--green-dark:#1f3d2b;--green-main:#6fa36f;--green-light:#f4f9f1}
+:root{
+  --green-dark:#1f3d2b;
+  --green-main:#6fa36f;
+  --green-light:#f4f9f1;
+  --text-dark:#333;
+  --btn-hover:#558c4b;
+}
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:var(--green-light)}
+body{background:var(--green-light);color:var(--text-dark);line-height:1.6}
+a{text-decoration:none;color:inherit}
 
-nav{position:fixed;width:100%;top:0;background:rgba(255,255,255,0.9);display:flex;justify-content:space-between;padding:15px 40px;z-index:1000}
-nav a{margin:0 10px;text-decoration:none;color:#333}
-#cart{font-weight:bold}
+nav{
+  position:fixed;width:100%;top:0;background:rgba(255,255,255,0.95);
+  display:flex;justify-content:space-between;align-items:center;padding:15px 40px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);z-index:1000;
+}
+nav a{margin:0 15px;font-weight:500;transition:color 0.3s}
+nav a:hover{color:var(--green-main)}
+#cart{font-weight:bold;color:var(--green-dark)}
 
-header{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;color:white;text-align:center;overflow:hidden}
-.video-bg{position:absolute;top:50%;left:50%;width:177.77vh;height:100vh;transform:translate(-50%,-50%);z-index:-1}
+header{
+  position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;color:white;overflow:hidden
+}
+.video-bg{
+  position:absolute;top:50%;left:50%;width:177.77vh;height:100vh;transform:translate(-50%,-50%);z-index:-1
+}
 .video-bg iframe{width:100%;height:100%}
-header::after{content:"";position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.5);pointer-events:none;z-index:1}
+header::after{
+  content:"";position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1
+}
 
-.btn{padding:12px 25px;border:none;border-radius:30px;margin:5px;cursor:pointer}
+header h1{font-size:3rem;margin-bottom:10px}
+header p{font-size:1.3rem;margin-bottom:20px}
+.btn{padding:12px 30px;border:none;border-radius:30px;margin:5px;cursor:pointer;font-weight:600;transition:0.3s}
 .btn-main{background:var(--green-main);color:white}
+.btn-main:hover{background:var(--btn-hover)}
 
 .page{display:none}
 .page.active{display:block}
 
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding:100px 20px}
-.product{background:white;border-radius:15px;overflow:hidden}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;padding:100px 20px}
+.product{
+  background:white;border-radius:15px;overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s;
+}
+.product:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.15)}
 .product img{width:100%;height:200px;object-fit:cover}
+.product h3{padding:15px;font-size:1.2rem}
 
 section{padding:100px 20px;text-align:center}
+section h2{font-size:2rem;margin-bottom:30px;color:var(--green-dark)}
+section p{max-width:700px;margin:0 auto 20px}
 
+footer{
+  background:var(--green-dark);color:white;padding:40px 20px;text-align:center
+}
+footer a{color:var(--green-main)}
+footer a:hover{color:white}
+
+.contact-form{max-width:500px;margin:0 auto;text-align:left}
+.contact-form input,.contact-form textarea{
+  width:100%;padding:10px;margin-bottom:15px;border-radius:8px;border:1px solid #ccc;
+}
+.contact-form button{width:100%}
+
+@media(max-width:768px){
+  nav{flex-direction:column;gap:10px}
+  header h1{font-size:2.2rem}
+  header p{font-size:1rem}
+}
 </style>
 </head>
 
 <body>
 
 <nav>
-<div><b>Harmonia</b></div>
+<div><b>Harmonia Botanica</b></div>
 <div>
 <a href="#" onclick="showPage('home')">Domů</a>
 <a href="#" onclick="showPage('products')">Produkty</a>
+<a href="#" onclick="showPage('about')">O nás</a>
+<a href="#" onclick="showPage('reviews')">Recenze</a>
+<a href="#" onclick="showPage('contact')">Kontakt</a>
 <a href="#" onclick="showPage('cartPage')">Košík</a>
 <span id="cart">Košík: 0</span>
 </div>
@@ -59,43 +109,76 @@ section{padding:100px 20px;text-align:center}
 <button class="btn btn-main" onclick="showPage('products')">Nakupovat</button>
 </div>
 </header>
-
-<section>
-<h2>O nás</h2>
-<img src="images/produkty.jpg" style="width:60%;border-radius:20px">
-<p>Pracujeme s přírodními bylinami a vytváříme produkty pro zdraví.</p>
-</section>
 </div>
 
 <!-- PRODUCTS -->
 <div id="products" class="page">
+<section>
+<h2>Naše produkty</h2>
 <div class="products">
 
 <div class="product">
 <img src="images/produkty.jpg">
 <h3>Bylinné mýdlo</h3>
+<p>Přírodní mýdlo z léčivých bylin pro každodenní péči.</p>
 <button class="btn btn-main" onclick="addToCart('Mýdlo')">Koupit</button>
 </div>
 
 <div class="product">
 <img src="images/produkty.jpg">
 <h3>Bylinný set</h3>
+<p>Kompletní set bylin pro vaše zdraví a pohodu.</p>
 <button class="btn btn-main" onclick="addToCart('Set')">Koupit</button>
 </div>
 
 <div class="product">
 <img src="images/produkty.jpg">
 <h3>Sušené byliny</h3>
+<p>Vysoce kvalitní sušené byliny připravené k použití.</p>
 <button class="btn btn-main" onclick="addToCart('Byliny')">Koupit</button>
 </div>
 
 <div class="product">
 <img src="images/produkty.jpg">
 <h3>Bylinný olej</h3>
+<p>Přírodní olej pro relaxaci a péči o tělo.</p>
 <button class="btn btn-main" onclick="addToCart('Olej')">Koupit</button>
 </div>
 
 </div>
+</section>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="page">
+<section>
+<h2>O nás</h2>
+<img src="images/produkty.jpg" style="width:60%;border-radius:20px;margin-bottom:20px">
+<p>Harmonia Botanica se specializuje na přírodní produkty z bylin. Naším cílem je zlepšit vaše zdraví a pohodu pomocí přírody. Každý produkt je pečlivě vyrobený a testovaný pro maximální kvalitu.</p>
+</section>
+</div>
+
+<!-- REVIEWS -->
+<div id="reviews" class="page">
+<section>
+<h2>Recenze zákazníků</h2>
+<p>„Skvělé produkty! Cítím se zdravěji a spokojeněji.“ – Jana K.</p>
+<p>„Bylinné mýdlo je úžasné, pokožka je hebká a svěží.“ – Petr L.</p>
+<p>„Rychlé dodání a produkty odpovídají popisu.“ – Martina K.</p>
+</section>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+<section>
+<h2>Kontaktujte nás</h2>
+<div class="contact-form">
+<input type="text" placeholder="Vaše jméno">
+<input type="email" placeholder="Email">
+<textarea rows="5" placeholder="Vaše zpráva"></textarea>
+<button class="btn btn-main">Odeslat</button>
+</div>
+</section>
 </div>
 
 <!-- CART -->
@@ -106,6 +189,10 @@ section{padding:100px 20px;text-align:center}
 <button class="btn btn-main" onclick="checkout()">Objednat</button>
 </section>
 </div>
+
+<footer>
+<p>&copy; 2026 Harmonia Botanica | <a href="#" onclick="showPage('contact')">Kontakt</a></p>
+</footer>
 
 <script>
 let cartCount=0;

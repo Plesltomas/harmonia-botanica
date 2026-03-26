@@ -4,80 +4,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harmonia Botanica</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --green-dark:#1f3d2b;
-  --green-main:#6fa36f;
-  --green-light:#f4f9f1;
-  --text-dark:#333;
-  --btn-hover:#558c4b;
+:root {
+  --green-dark: #1f3d2b;
+  --green-main: #6fa36f;
+  --green-light: #f4f9f1;
+  --text-dark: #333;
+  --btn-hover: #558c4b;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:var(--green-light);color:var(--text-dark);line-height:1.6}
-a{text-decoration:none;color:inherit}
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body { background: var(--green-light); color: var(--text-dark); line-height: 1.6; scroll-behavior: smooth; }
+a { text-decoration:none; color:inherit; }
+button { cursor:pointer; }
 
-nav{
-  position:fixed;width:100%;top:0;background:rgba(255,255,255,0.95);
-  display:flex;justify-content:space-between;align-items:center;padding:15px 40px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.1);z-index:1000;
+/* NAVIGATION */
+nav {
+  position: fixed; width:100%; top:0; background: rgba(255,255,255,0.95);
+  display:flex; justify-content:space-between; align-items:center;
+  padding:15px 50px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index:1000;
 }
-nav a{margin:0 15px;font-weight:500;transition:color 0.3s}
-nav a:hover{color:var(--green-main)}
-#cart{font-weight:bold;color:var(--green-dark)}
+nav a { margin:0 15px; font-weight:500; transition:0.3s; }
+nav a:hover { color: var(--green-main); }
+#cart { font-weight:bold; color: var(--green-dark); }
 
-header{
-  position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
-  text-align:center;color:white;overflow:hidden
+/* HEADER */
+header {
+  position:relative; height:100vh; display:flex; align-items:center; justify-content:center;
+  text-align:center; color:white; overflow:hidden;
 }
-.video-bg{
-  position:absolute;top:50%;left:50%;width:177.77vh;height:100vh;transform:translate(-50%,-50%);z-index:-1
+.video-bg {
+  position:absolute; top:50%; left:50%; width:177.77vh; height:100vh; transform:translate(-50%,-50%); z-index:-1;
 }
-.video-bg iframe{width:100%;height:100%}
-header::after{
-  content:"";position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1
+.video-bg iframe { width:100%; height:100%; }
+header::after {
+  content:""; position:absolute; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1;
 }
+header h1 { font-size:3rem; margin-bottom:15px; }
+header p { font-size:1.4rem; margin-bottom:25px; }
+.btn { padding:12px 30px; border:none; border-radius:30px; margin:5px; font-weight:600; transition:0.3s; }
+.btn-main { background: var(--green-main); color:white; }
+.btn-main:hover { background: var(--btn-hover); }
 
-header h1{font-size:3rem;margin-bottom:10px}
-header p{font-size:1.3rem;margin-bottom:20px}
-.btn{padding:12px 30px;border:none;border-radius:30px;margin:5px;cursor:pointer;font-weight:600;transition:0.3s}
-.btn-main{background:var(--green-main);color:white}
-.btn-main:hover{background:var(--btn-hover)}
+/* PAGE LAYOUT */
+.page { display:none; padding-top:80px; }
+.page.active { display:block; }
 
-.page{display:none}
-.page.active{display:block}
+/* SECTIONS */
+section { padding:80px 20px; text-align:center; }
+section h2 { font-size:2.2rem; margin-bottom:40px; color: var(--green-dark); }
+section p { max-width:750px; margin:0 auto 25px; }
+section img { border-radius:20px; margin-bottom:25px; }
 
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;padding:100px 20px}
-.product{
-  background:white;border-radius:15px;overflow:hidden;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s;
+/* PRODUCTS GRID */
+.products { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; padding:0 20px; }
+.product {
+  background:white; border-radius:15px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:transform 0.3s,box-shadow 0.3s;
 }
-.product:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.15)}
-.product img{width:100%;height:200px;object-fit:cover}
-.product h3{padding:15px;font-size:1.2rem}
+.product:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+.product img { width:100%; height:200px; object-fit:cover; }
+.product h3 { padding:15px; font-size:1.2rem; }
+.product p { padding:0 15px 15px; font-size:0.95rem; color:#555; }
 
-section{padding:100px 20px;text-align:center}
-section h2{font-size:2rem;margin-bottom:30px;color:var(--green-dark)}
-section p{max-width:700px;margin:0 auto 20px}
+/* WORKSHOPS GRID */
+.workshops { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
 
-footer{
-  background:var(--green-dark);color:white;padding:40px 20px;text-align:center
-}
-footer a{color:var(--green-main)}
-footer a:hover{color:white}
+/* CONTACT FORM */
+.contact-form { max-width:500px; margin:0 auto; text-align:left; }
+.contact-form input, .contact-form textarea { width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ccc; }
+.contact-form button { width:100%; }
 
-.contact-form{max-width:500px;margin:0 auto;text-align:left}
-.contact-form input,.contact-form textarea{
-  width:100%;padding:10px;margin-bottom:15px;border-radius:8px;border:1px solid #ccc;
-}
-.contact-form button{width:100%}
+/* CART */
+#cart-items { list-style:none; padding:0; margin-bottom:20px; text-align:left; max-width:400px; margin:20px auto; }
+#cart-items li { background:white; padding:10px 15px; margin-bottom:8px; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.1); }
 
+/* FOOTER */
+footer { background: var(--green-dark); color:white; padding:40px 20px; text-align:center; }
+footer a { color:var(--green-main); }
+footer a:hover { color:white; }
+
+/* RESPONSIVE */
 @media(max-width:768px){
-  nav{flex-direction:column;gap:10px}
-  header h1{font-size:2.2rem}
-  header p{font-size:1rem}
+  nav { flex-direction:column; gap:10px; padding:15px 20px; }
+  header h1 { font-size:2.2rem; }
+  header p { font-size:1rem; }
 }
 </style>
 </head>
@@ -85,30 +97,32 @@ footer a:hover{color:white}
 <body>
 
 <nav>
-<div><b>Harmonia Botanica</b></div>
-<div>
-<a href="#" onclick="showPage('home')">Domů</a>
-<a href="#" onclick="showPage('products')">Produkty</a>
-<a href="#" onclick="showPage('about')">O nás</a>
-<a href="#" onclick="showPage('reviews')">Recenze</a>
-<a href="#" onclick="showPage('contact')">Kontakt</a>
-<a href="#" onclick="showPage('cartPage')">Košík</a>
-<span id="cart">Košík: 0</span>
-</div>
+  <div><b>Harmonia Botanica</b></div>
+  <div>
+    <a href="#" onclick="showPage('home')">Domů</a>
+    <a href="#" onclick="showPage('products')">Produkty</a>
+    <a href="#" onclick="showPage('about')">O firmě</a>
+    <a href="#" onclick="showPage('activities')">Naše činnost</a>
+    <a href="#" onclick="showPage('workshops')">Workshopy</a>
+    <a href="#" onclick="showPage('reviews')">Recenze</a>
+    <a href="#" onclick="showPage('contact')">Kontakt</a>
+    <a href="#" onclick="showPage('cartPage')">Košík</a>
+    <span id="cart">Košík: 0</span>
+  </div>
 </nav>
 
 <!-- HOME -->
 <div id="home" class="page active">
-<header>
-<div class="video-bg">
-<iframe src="https://www.youtube.com/embed/w6uX9jamcwQ?autoplay=1&mute=1&loop=1&playlist=w6uX9jamcwQ&controls=0&modestbranding=1&playsinline=1&enablejsapi=1" allow="autoplay"></iframe>
-</div>
-<div style="position:relative;z-index:2;">
-<h1>Harmonia Botanica</h1>
-<p>Přírodní síla bylin</p>
-<button class="btn btn-main" onclick="showPage('products')">Nakupovat</button>
-</div>
-</header>
+  <header>
+    <div class="video-bg">
+      <iframe src="https://www.youtube.com/embed/w6uX9jamcwQ?autoplay=1&mute=1&loop=1&playlist=w6uX9jamcwQ&controls=0&modestbranding=1&playsinline=1&enablejsapi=1" allow="autoplay"></iframe>
+    </div>
+    <div style="position:relative;z-index:2;">
+      <h1>Harmonia Botanica</h1>
+      <p>Přírodní síla bylin pro vaše zdraví a pohodu</p>
+      <button class="btn btn-main" onclick="showPage('products')">Nakupovat</button>
+    </div>
+  </header>
 </div>
 
 <!-- PRODUCTS -->
@@ -116,35 +130,30 @@ footer a:hover{color:white}
 <section>
 <h2>Naše produkty</h2>
 <div class="products">
-
-<div class="product">
-<img src="images/produkty.jpg">
-<h3>Bylinné mýdlo</h3>
-<p>Přírodní mýdlo z léčivých bylin pro každodenní péči.</p>
-<button class="btn btn-main" onclick="addToCart('Mýdlo')">Koupit</button>
-</div>
-
-<div class="product">
-<img src="images/produkty.jpg">
-<h3>Bylinný set</h3>
-<p>Kompletní set bylin pro vaše zdraví a pohodu.</p>
-<button class="btn btn-main" onclick="addToCart('Set')">Koupit</button>
-</div>
-
-<div class="product">
-<img src="images/produkty.jpg">
-<h3>Sušené byliny</h3>
-<p>Vysoce kvalitní sušené byliny připravené k použití.</p>
-<button class="btn btn-main" onclick="addToCart('Byliny')">Koupit</button>
-</div>
-
-<div class="product">
-<img src="images/produkty.jpg">
-<h3>Bylinný olej</h3>
-<p>Přírodní olej pro relaxaci a péči o tělo.</p>
-<button class="btn btn-main" onclick="addToCart('Olej')">Koupit</button>
-</div>
-
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Bylinné mýdlo</h3>
+    <p>Přírodní mýdlo z léčivých bylin pro každodenní péči.</p>
+    <button class="btn btn-main" onclick="addToCart('Bylinné mýdlo')">Koupit</button>
+  </div>
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Bylinný set</h3>
+    <p>Kompletní set bylin pro domácí výrobu vlastních přípravků.</p>
+    <button class="btn btn-main" onclick="addToCart('Bylinný set')">Koupit</button>
+  </div>
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Sušené byliny</h3>
+    <p>Vysoce kvalitní sušené byliny od bio-dodavatelů, připravené k použití.</p>
+    <button class="btn btn-main" onclick="addToCart('Sušené byliny')">Koupit</button>
+  </div>
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Bylinný olej</h3>
+    <p>Přírodní olej pro relaxaci a péči o tělo.</p>
+    <button class="btn btn-main" onclick="addToCart('Bylinný olej')">Koupit</button>
+  </div>
 </div>
 </section>
 </div>
@@ -152,9 +161,58 @@ footer a:hover{color:white}
 <!-- ABOUT -->
 <div id="about" class="page">
 <section>
-<h2>O nás</h2>
+<h2>O firmě</h2>
 <img src="images/produkty.jpg" style="width:60%;border-radius:20px;margin-bottom:20px">
-<p>Harmonia Botanica se specializuje na přírodní produkty z bylin. Naším cílem je zlepšit vaše zdraví a pohodu pomocí přírody. Každý produkt je pečlivě vyrobený a testovaný pro maximální kvalitu.</p>
+<p>Harmonia Botanica je rodinná firma zaměřená na výrobu a distribuci přírodních bylinkových produktů. Naším cílem je podporovat zdravý životní styl, šířit znalosti o bylinách a přinášet zákazníkům produkty nejvyšší kvality. Každý produkt je pečlivě vyroben z ekologicky pěstovaných surovin a testován pro maximální účinnost.</p>
+</section>
+</div>
+
+<!-- ACTIVITIES -->
+<div id="activities" class="page">
+<section>
+<h2>Naše činnost</h2>
+<div class="products">
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Výroba bylinkových sad</h3>
+    <p>Vytváříme sady pro domácí výrobu bylinkových přípravků.</p>
+  </div>
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Nákup přírodních polotovarů</h3>
+    <p>Spolupracujeme s dodavateli jako Mýdlový svět pro kvalitní suroviny.</p>
+  </div>
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Sušení bylin</h3>
+    <p>Sušíme vybrané druhy bylin přímo od bio-dodavatelů.</p>
+  </div>
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Sociální projekty</h3>
+    <p>Darujeme sady sociálně znevýhodněným a podporujeme komunity.</p>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- WORKSHOPS -->
+<div id="workshops" class="page">
+<section>
+<h2>Workshopy</h2>
+<p>Naučíme vás vyrobit vlastní produkty pomocí našich sad. Přihlaste se na interaktivní workshop a získejte zkušenosti s bylinkami a přírodní výrobou.</p>
+<div class="workshops">
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Workshop: Mýdla</h3>
+    <p>Vyrobte si vlastní bylinné mýdlo s naším instruktorem.</p>
+  </div>
+  <div class="product">
+    <img src="images/produkty.jpg">
+    <h3>Workshop: Bylinné oleje</h3>
+    <p>Naučte se vytvářet relaxační a aromatické oleje.</p>
+  </div>
+</div>
 </section>
 </div>
 
@@ -197,16 +255,16 @@ footer a:hover{color:white}
 <script>
 let cartCount=0;
 function showPage(id){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- window.scrollTo(0,0);
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
 }
 function addToCart(p){
- cartCount++;
- document.getElementById('cart').innerText='Košík: '+cartCount;
- let li=document.createElement('li');
- li.innerText=p;
- document.getElementById('cart-items').appendChild(li);
+  cartCount++;
+  document.getElementById('cart').innerText='Košík: '+cartCount;
+  let li=document.createElement('li');
+  li.innerText=p;
+  document.getElementById('cart-items').appendChild(li);
 }
 function checkout(){alert('Objednávka odeslána!')}
 </script>

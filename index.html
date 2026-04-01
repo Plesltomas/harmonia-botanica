@@ -3,243 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harmonia Botanica</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<title>Harmonia Botanica | Přírodní produkty</title>
+<meta name="description" content="Přírodní bylinné produkty pro zdraví a pohodu">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --green-dark:#1f3d2b;
-  --green-main:#6fa36f;
-  --green-light:#f4f9f1;
-  --text-dark:#333;
-  --btn-hover:#558c4b;
+:root{
+--green:#6fa36f;
+--dark:#1f3d2b;
+--light:#f4f9f1;
+--bg:white;
+--text:#333;
 }
+
+body.dark{
+--bg:#1a1a1a;
+--text:#eee;
+--light:#111;
+}
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:var(--green-light); color:var(--text-dark); line-height:1.6; scroll-behavior:smooth;}
-a{text-decoration:none;color:inherit;}
-button{cursor:pointer;}
+body{background:var(--bg);color:var(--text);transition:0.3s}
 
 /* NAV */
-nav{position:fixed;width:100%;top:0;background:rgba(255,255,255,0.95);display:flex;justify-content:space-between;align-items:center;padding:15px 50px;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:1000;}
-nav a{margin:0 15px;font-weight:500;transition:0.3s;}
-nav a:hover{color:var(--green-main);}
-#cart{font-weight:bold;color:var(--green-dark);}
+nav{
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
 
-/* HEADER */
-header{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:white;overflow:hidden;}
-.video-bg{position:absolute;top:50%;left:50%;width:177.77vh;height:100vh;transform:translate(-50%,-50%);z-index:-1;}
-.video-bg iframe{width:100%;height:100%;}
-header::after{content:"";position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1;}
-header h1{font-size:3rem;margin-bottom:15px;}
-header p{font-size:1.4rem;margin-bottom:25px;}
-.btn{padding:12px 30px;border:none;border-radius:30px;margin:5px;font-weight:600;transition:0.3s;}
-.btn-main{background:var(--green-main);color:white;}
-.btn-main:hover{background:var(--btn-hover);}
+.menu{
+display:flex;
+gap:15px;
+}
 
-/* PAGE */
-.page{display:none;padding-top:80px;}
-.page.active{display:block;}
+.menu a{font-weight:500;}
+.menu a:hover{color:var(--green);}
 
-/* SECTION */
+.hamburger{
+display:none;
+font-size:24px;
+cursor:pointer;
+}
+
+/* HERO */
+header{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+url("https://cdn.pixabay.com/photo/2017/07/31/11/21/herbs-2557194_1280.jpg") center/cover;
+}
+
+header h1{font-size:3rem;}
+.btn{
+background:var(--green);
+padding:12px 25px;
+border:none;
+border-radius:25px;
+color:white;
+margin-top:20px;
+cursor:pointer;
+}
+
+/* SECTIONS */
 section{padding:80px 20px;text-align:center;}
-section h2{font-size:2.2rem;margin-bottom:40px;color:var(--green-dark);}
-section p{max-width:750px;margin:0 auto 25px;}
-section img{border-radius:20px;margin-bottom:25px;}
 
-/* GRID */
-.products, .workshops{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;padding:0 20px;}
-.product{background:white;border-radius:15px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s;}
-.product:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.15);}
-.product img{width:100%;height:200px;object-fit:cover;}
-.product h3{padding:15px;font-size:1.2rem;}
-.product p{padding:0 15px 15px;font-size:0.95rem;color:#555;}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+/* CARD */
+.card{
+background:var(--bg);
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+overflow:hidden;
+transition:0.3s;
+}
+
+.card:hover{transform:translateY(-8px);}
+
+.card img{width:100%;height:200px;object-fit:cover;}
+.card h3{padding:10px;}
+.card p{padding:0 10px;}
+.price{font-weight:bold;color:var(--green);margin:10px;}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:5px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
 
 /* CART */
-#cart-items{list-style:none;padding:0;margin-bottom:20px;text-align:left;max-width:400px;margin:20px auto;}
-#cart-items li{background:white;padding:10px 15px;margin-bottom:8px;border-radius:8px;box-shadow:0 3px 8px rgba(0,0,0,0.1);}
+#cart-box{
+position:fixed;
+right:20px;
+bottom:20px;
+background:var(--bg);
+padding:15px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+max-width:300px;
+}
 
-/* FOOTER */
-footer{background:var(--green-dark);color:white;padding:40px 20px;text-align:center;}
-footer a{color:var(--green-main);}
-footer a:hover{color:white;}
-
-/* RESPONSIVE */
-@media(max-width:768px){nav{flex-direction:column;gap:10px;padding:15px 20px;}header h1{font-size:2.2rem;}header p{font-size:1rem;}}
+/* MOBILE */
+@media(max-width:768px){
+.menu{display:none;flex-direction:column;background:white;position:absolute;top:60px;right:0;padding:20px;}
+.menu.active{display:flex;}
+.hamburger{display:block;}
+header h1{font-size:2rem;}
+}
 </style>
 </head>
 
 <body>
-<!-- NAV -->
+
 <nav>
-  <div><b>Harmonia Botanica</b></div>
-  <div>
-    <a href="#" onclick="showPage('home')">Domů</a>
-    <a href="#" onclick="showPage('products')">Produkty</a>
-    <a href="#" onclick="showPage('about')">O firmě</a>
-    <a href="#" onclick="showPage('activities')">Naše činnost</a>
-    <a href="#" onclick="showPage('workshops')">Workshopy</a>
-    <a href="#" onclick="showPage('reviews')">Recenze</a>
-    <a href="#" onclick="showPage('contact')">Kontakt</a>
-    <a href="#" onclick="showPage('cartPage')">Košík</a>
-    <span id="cart">Košík: 0</span>
-  </div>
+<b>Harmonia Botanica</b>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+<div class="menu" id="menu">
+<a href="#home">Domů</a>
+<a href="#products">Produkty</a>
+<a href="#about">O nás</a>
+<a href="#contact">Kontakt</a>
+<button onclick="toggleDark()">🌙</button>
+</div>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="page active">
-<header>
-  <div class="video-bg">
-    <iframe src="https://www.youtube.com/embed/w6uX9jamcwQ?autoplay=1&mute=1&loop=1&playlist=w6uX9jamcwQ&controls=0&modestbranding=1&playsinline=1&enablejsapi=1" allow="autoplay"></iframe>
-  </div>
-  <div style="position:relative;z-index:2;">
-    <h1>Harmonia Botanica</h1>
-    <p>Přírodní síla bylin pro vaše zdraví a pohodu</p>
-    <button class="btn btn-main" onclick="showPage('products')">Nakupovat</button>
-  </div>
+<header id="home">
+<div>
+<h1>Harmonia Botanica</h1>
+<p>Přírodní síla bylin</p>
+<button class="btn" onclick="scrollToSection('products')">Nakupovat</button>
+</div>
 </header>
+
+<section id="products">
+<h2>Produkty</h2>
+<div class="grid">
+
+<div class="card">
+<img src="https://cdn.pixabay.com/photo/2017/07/31/11/21/herbs-2557194_1280.jpg">
+<h3>Mýdlo</h3>
+<p>Přírodní péče</p>
+<div class="price">149 Kč</div>
+<button class="btn" onclick="addToCart('Mýdlo',149)">Koupit</button>
 </div>
 
-<!-- PRODUCTS -->
-<div id="products" class="page">
-<section>
-<h2>Naše produkty</h2>
-<div class="products">
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2017/07/31/11/21/herbs-2557194_1280.jpg" alt="Bylinné mýdlo">
-<h3>Bylinné mýdlo</h3>
-<p>Přírodní mýdlo z léčivých bylin.</p>
-<button class="btn btn-main" onclick="addToCart('Bylinné mýdlo')">Koupit</button>
+<div class="card">
+<img src="https://cdn.pixabay.com/photo/2019/08/06/15/25/herbs-4388827_1280.jpg">
+<h3>Set</h3>
+<p>DIY výroba</p>
+<div class="price">299 Kč</div>
+<button class="btn" onclick="addToCart('Set',299)">Koupit</button>
 </div>
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2019/08/06/15/25/herbs-4388827_1280.jpg" alt="Bylinný set">
-<h3>Bylinný set</h3>
-<p>Set bylin pro domácí výrobu vlastních přípravků.</p>
-<button class="btn btn-main" onclick="addToCart('Bylinný set')">Koupit</button>
-</div>
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2022/01/21/06/57/herbs-6958853_1280.jpg" alt="Sušené byliny">
-<h3>Sušené byliny</h3>
-<p>Vysoce kvalitní sušené byliny od bio-dodavatelů.</p>
-<button class="btn btn-main" onclick="addToCart('Sušené byliny')">Koupit</button>
-</div>
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2020/12/20/07/10/herbs-5852143_1280.jpg" alt="Bylinný olej">
-<h3>Bylinný olej</h3>
-<p>Přírodní olej pro relaxaci a péči o tělo.</p>
-<button class="btn btn-main" onclick="addToCart('Bylinný olej')">Koupit</button>
-</div>
+
 </div>
 </section>
-</div>
 
-<!-- ABOUT -->
-<div id="about" class="page">
-<section>
-<h2>O firmě</h2>
-<img src="https://cdn.pixabay.com/photo/2017/04/02/17/18/herbs-2196940_1280.jpg" alt="O firmě" style="width:60%;">
-<p>Harmonia Botanica je rodinná firma zaměřená na výrobu a distribuci přírodních bylinkových produktů. Podporujeme zdravý životní styl a šíříme znalosti o bylinách.</p>
+<section id="about">
+<h2>O nás</h2>
+<p>Rodinná firma zaměřená na bylinky a zdraví.</p>
 </section>
-</div>
 
-<!-- ACTIVITIES -->
-<div id="activities" class="page">
 <section>
-<h2>Naše činnost</h2>
-<div class="products">
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2017/07/31/11/21/herbs-2557194_1280.jpg" alt="Výroba sad">
-<h3>Výroba bylinkových sad</h3>
-<p>Vytváříme sady pro domácí výrobu bylinkových přípravků.</p>
-</div>
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2019/08/06/15/25/herbs-4388827_1280.jpg" alt="Nákup polotovarů">
-<h3>Nákup přírodních polotovarů</h3>
-<p>Spolupracujeme s dodavateli surovin.</p>
-</div>
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2022/01/21/06/57/herbs-6958853_1280.jpg" alt="Sušení bylin">
-<h3>Sušení bylin</h3>
-<p>Sušíme vybrané druhy bylin od bio-dodavatelů.</p>
-</div>
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2020/12/20/07/10/herbs-5852143_1280.jpg" alt="Sociální projekty">
-<h3>Sociální projekty</h3>
-<p>Darujeme sady sociálně znevýhodněným.</p>
-</div>
-</div>
+<h2>Checkout</h2>
+<input placeholder="Jméno">
+<input placeholder="Email">
+<textarea placeholder="Adresa"></textarea>
+<button class="btn" onclick="checkout()">Zaplatit</button>
 </section>
-</div>
 
-<!-- WORKSHOPS -->
-<div id="workshops" class="page">
-<section>
-<h2>Workshopy</h2>
-<p>Naučíme vás vyrobit vlastní produkty pomocí našich sad.</p>
-<div class="workshops">
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2017/04/02/17/18/herbs-2196940_1280.jpg" alt="Workshop mýdla">
-<h3>Workshop: Mýdla</h3>
-<p>Vyrobte si vlastní bylinné mýdlo.</p>
-</div>
-<div class="product">
-<img src="https://cdn.pixabay.com/photo/2020/12/20/07/10/herbs-5852143_1280.jpg" alt="Workshop oleje">
-<h3>Workshop: Oleje</h3>
-<p>Naučte se vyrábět relaxační bylinné oleje.</p>
-</div>
-</div>
+<section id="contact">
+<h2>Kontakt</h2>
+<p>info@harmoniabotanica.cz</p>
 </section>
-</div>
 
-<!-- REVIEWS -->
-<div id="reviews" class="page">
-<section>
-<h2>Recenze zákazníků</h2>
-<p>„Skvělé produkty! Cítím se zdravěji.“ – Jana K.</p>
-<p>„Bylinné mýdlo je úžasné, pokožka je hebká.“ – Petr L.</p>
-<p>„Rychlé dodání a produkty odpovídají popisu.“ – Martina K.</p>
-</section>
+<div id="cart-box">
+<h3>Košík</h3>
+<ul id="cart"></ul>
+<p><b>Celkem: <span id="total">0</span> Kč</b></p>
 </div>
-
-<!-- CONTACT -->
-<div id="contact" class="page">
-<section>
-<h2>Kontaktujte nás</h2>
-<div class="contact-form">
-<input type="text" placeholder="Vaše jméno">
-<input type="email" placeholder="Email">
-<textarea rows="5" placeholder="Vaše zpráva"></textarea>
-<button class="btn btn-main">Odeslat</button>
-</div>
-</section>
-</div>
-
-<!-- CART -->
-<div id="cartPage" class="page">
-<section>
-<h2>Košík</h2>
-<ul id="cart-items"></ul>
-<button class="btn btn-main" onclick="checkout()">Objednat</button>
-</section>
-</div>
-
-<footer>
-<p>&copy; 2026 Harmonia Botanica | <a href="#" onclick="showPage('contact')">Kontakt</a></p>
-</footer>
 
 <script>
-let cartCount=0;
-function showPage(id){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-window.scrollTo(0,0);
+let cart=[];
+let total=0;
+
+function addToCart(name,price){
+cart.push({name,price});
+total+=price;
+renderCart();
+saveCart();
 }
-function addToCart(p){
-cartCount++;
-document.getElementById('cart').innerText='Košík: '+cartCount;
-let li=document.createElement('li');
-li.innerText=p;
-document.getElementById('cart-items').appendChild(li);
+
+function renderCart(){
+let el=document.getElementById("cart");
+el.innerHTML="";
+cart.forEach((item,i)=>{
+el.innerHTML+=`<li>${item.name} - ${item.price} Kč <button onclick="removeItem(${i})">x</button></li>`;
+});
+document.getElementById("total").innerText=total;
 }
-function checkout(){alert('Objednávka odeslána!')}
+
+function removeItem(i){
+total-=cart[i].price;
+cart.splice(i,1);
+renderCart();
+saveCart();
+}
+
+function saveCart(){
+localStorage.setItem("cart",JSON.stringify(cart));
+localStorage.setItem("total",total);
+}
+
+function loadCart(){
+cart=JSON.parse(localStorage.getItem("cart"))||[];
+total=parseInt(localStorage.getItem("total"))||0;
+renderCart();
+}
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+function toggleDark(){
+document.body.classList.toggle("dark");
+}
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function checkout(){
+alert("Platba simulována (napoj Stripe)");
+}
+
+loadCart();
 </script>
 
 </body>
